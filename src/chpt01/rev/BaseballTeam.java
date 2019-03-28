@@ -4,7 +4,7 @@
  *
  *    Thema: - 1.10 - Review Questions
  *
- *  Listing: - 1.10.30 - TestClass.java
+ *  Listing: - 1.10.31 - BaseballTeam.java
  *  
  *   IDEA Project
  *
@@ -16,18 +16,16 @@
 package chpt01.rev;
 
 public class BaseballTeam {
-    private int ISBN;
-    private String title, author;
-    private int pageCount;
-    public int hashCode() {
-        return ISBN;
-    }
-    @Override public boolean equals(Object obj) {
-        if (!(obj instanceof BaseballTeam)) {
+    private String city, mascot;
+    private int numberOfPlayers;
+    public boolean equals(Object obj) {
+        if (!(obj instanceof BaseballTeam))
             return false;
-        }
         BaseballTeam other = (BaseballTeam) obj;
-        return this.ISBN == other.ISBN;
+        return (city.equals(other.city) && mascot.equals(other.mascot));
+    }
+    public int hashCode() {
+        return numberOfPlayers;
     }
     // imagine getters and setters are here
 }

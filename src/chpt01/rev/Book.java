@@ -4,7 +4,7 @@
  *
  *    Thema: - 1.10 - Review Questions
  *
- *  Listing: - 1.10.30 - TestClass.java
+ *  Listing: - 1.10.30 - Book.java
  *  
  *   IDEA Project
  *
