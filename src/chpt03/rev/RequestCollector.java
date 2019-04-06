@@ -2,9 +2,9 @@
 /*     Buch: - Flow2 / OCP Study Guide
  *  Kapitel: - 03 - Generics & Collections
  *
- *    Thema: - 3.0 - Introduction
+ *    Thema: - 3.8 - Review Questions
  *
- *  Listing: - 3.0.00 - TetstClass.java
+ *  Listing: - 3.8.50 - RequestCollector.java
  *
  *   IDEA Project
  *
@@ -18,7 +18,7 @@ import java.util.*;
 class Request {
 }
 
-class RequestCollector {
+public class RequestCollector {
     //1 : Insert declaration here
     Queue<Request> container = new LinkedList<Request>();
 

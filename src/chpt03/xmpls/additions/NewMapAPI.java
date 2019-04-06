@@ -1,13 +1,13 @@
 // <editor-fold defaultstate="collapsed" desc="Title">
 /*     Buch: - Flow2 / OCP Study Guide
- *  Kapitel: - 02 - Generics & Collections
+ *  Kapitel: - 03 - Generics & Collections
  *
- *    Thema: - 2.6 - Additions in Java 8
- *             2.6.5 - Using New Java 8 Map APIs
- *             2.6.5.1 - merge
- *             2.6.5.2 - computeIfPresent and computeIfAbsent
+ *    Thema: - 3.6 - Additions in Java 8
+ *             3.6.5 - Using New Java 8 Map APIs
+ *             3.6.5.1 - merge
+ *             3.6.5.2 - computeIfPresent and computeIfAbsent
  *
- *  Listing: - 2.6.34 - MethodTesting.java
+ *  Listing: - 3.6.34 - MethodTesting.java
  *  
  *   IDEA Project
  *
