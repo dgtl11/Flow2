@@ -13,50 +13,61 @@
 
 package chpt03.playGround.de.gfn.ocp.JavaParking;
 
-import java.io.*;
+
+
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.Scanner;
 
-public class App {
+/**
+ *
+ * @author tlubowiecki
+ */
+public class App2 {
 
     private static final String DB_FILE = "data.dat";
-
     private static final String KEYS = "**************************\n"
-                                     + " i = Einparken \n"
-                                     + " o = Ausparken \n"
-                                     + " l = list elements \n"
-                                     + " x ^ exit = exit \n"
-                                     + " h ^ help = manual \n"
-                                     + "**************************\n";
+            + " i = Einparken \n"
+            + " o = Ausparken \n"
+            + " l = Geparkte Autos anzeigen \n"
+            + " x = Programm verlassen \n"
+            + " h = Hilfe \n"
+            + "**************************\n";
 
+    /**
+     * @param args the command line arguments
+     */
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
 
-        // Parking parking = new Parking(10);
-        // alte Daten aus der DAtei lesen
+        // Alte Daten aus der Datei lesen
         Parking parking = readFromFile();
 
-        // wenn datei nicht da oder leer
+        // Wenn Datei nicht da oder leer
         if(parking == null)
             parking = new Parking(10);
 
         String input;
 
-        // keys ausgeben
-
         System.out.println(KEYS);
-
 
         prog: while(true) {
 
-            System.out.println("Eingabe: ");
-            input = scanner.nextLine();         // next bis zum nächsten space
+            System.out.print("Eingabe: ");
+            input = scanner.nextLine();
 
-            switch (input.toLowerCase()) {
+            switch(input.toLowerCase()) {
 
                 case "i":
                     System.out.print("Kennzeichen: ");
-                    if (parking.insert(new Car(scanner.nextLine())))
+                    if(parking.insert(new Car(scanner.nextLine())))
                         System.out.println("Eingeparkt");
 
                     saveInFile(parking);
@@ -65,28 +76,26 @@ public class App {
                 case "o": {
                     System.out.print("Kennzeichen: ");
                     Car car = parking.remove(scanner.nextLine());
-                    if (car != null) {
+                    if(car != null) {
                         System.out.println(car.getRegistration() + ": Ausgeparkt");
                         BillHelper.showBill(car);
                     }
                     else
-                        System.out.println("Fahrzeug wurde nicht gefunden. ");
+                        System.out.println("Fahrzeug wurde nicht gefunden.");
 
-                    // in datei schreiben
                     saveInFile(parking);
                 }
-                    break;
+                break;
 
                 case "l":
-                    // eingeparkte Fahrzeuge anzeigen
-                    for(Car c : parking.getCars()) {
-                        System.out.println(c.getRegistration());
+                    // Eingeparte Fahrzeuge anzeigen
+                    for(Car car : parking.getCars()) {
+                        System.out.println(car.getRegistration());
                     }
                     break;
 
                 case "help":
                 case "h":
-                    // help
                     System.out.println(KEYS);
                     break;
 
@@ -94,42 +103,40 @@ public class App {
                 case "x":
                     break prog;
 
-                 default:
-                     System.out.println("Falsche Eingabe");
+                default:
+                    System.out.println("Falsche Eingabe.");
             }
         }
 
         System.out.println("Programm beendet!");
-
     }
 
     public static Parking readFromFile() {
 
-        // try with resources / must implemen autocloseable
-        try (
-            FileInputStream fis = new FileInputStream(DB_FILE);
-            BufferedInputStream bis = new BufferedInputStream(fis);        // decorator gibt der Kuh flügel
-            ObjectInputStream ois = new ObjectInputStream(bis)) {         // decorator und rollschuhe
+        try(FileInputStream fis = new FileInputStream(DB_FILE);
+            BufferedInputStream bis = new BufferedInputStream(fis);
+            ObjectInputStream ois = new ObjectInputStream(bis)) {
 
             return (Parking) ois.readObject();
 
         } catch (IOException | ClassNotFoundException ex) {
-            System.out.println("Probleme beim Lesen aus der Datei");
+            System.out.println("Probleme beim Lesen aus der Datei.");
         }
-
         return null;
     }
 
     public static void saveInFile(Parking parking) {
-        try (FileOutputStream fos = new FileOutputStream(DB_FILE);
-             BufferedOutputStream bos = new BufferedOutputStream(fos);        // decorator gibt der Kuh flügel
-             ObjectOutputStream oos = new ObjectOutputStream(bos)) {
+
+        try(FileOutputStream fos = new FileOutputStream(DB_FILE);
+            BufferedOutputStream bos = new BufferedOutputStream(fos);
+            ObjectOutputStream oos = new ObjectOutputStream(bos)) {
 
             oos.writeObject(parking);
 
         } catch (IOException ex) {
-            System.out.println("Probleme beim Schreiben in die Datei");
+            System.out.println("Probleme beim Schreiben in die Datei.");
         }
     }
-    
 }
+
+

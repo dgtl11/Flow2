@@ -13,9 +13,10 @@
 
 package chpt03.playGround.de.gfn.ocp.JavaParking;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
-public class Car {
+public class Car implements Serializable {
 
     private final String registration;
 
