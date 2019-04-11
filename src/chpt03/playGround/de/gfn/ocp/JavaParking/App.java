@@ -14,6 +14,7 @@
 package chpt03.playGround.de.gfn.ocp.JavaParking;
 
 import java.io.*;
+import java.time.LocalDateTime;
 import java.util.Scanner;
 
 public class App {
@@ -79,9 +80,15 @@ public class App {
 
                 case "l":
                     // eingeparkte Fahrzeuge anzeigen
+                    /*
                     for(Car c : parking.getCars()) {
                         System.out.println(c.getRegistration());
                     }
+                    */
+                    parking.showCars(LocalDateTime.now().minusMinutes(2), LocalDateTime.now());
+                    // parking.showCars(Parking.COMP_TIME_ASC);
+                    // parking.showCars((a, b) -> a.hashCode() - b.hashCode());
+                    // möglich
                     break;
 
                 case "help":

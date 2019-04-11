@@ -14,9 +14,29 @@
 package chpt03.playGround.de.gfn.ocp.JavaParking;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.*;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
 
 public class Parking implements Serializable {
+
+    public static final long serialVersionUID = 2L;         // zur Kontrolle
+
+    public static final Comparator<Car> COMP_TIME_ASC;
+    public static final Comparator<Car> COMP_TIME_DESC;
+
+    public static final Comparator<Car> COMP_REGISTRATION_ASC;
+    public static final Comparator<Car> COMP_REGISTRATION_DESC;
+
+
+    static {
+        COMP_TIME_ASC = (a, b) -> a.getStart().compareTo(b.getStart());
+        COMP_TIME_DESC = COMP_TIME_ASC.reversed();
+
+        COMP_REGISTRATION_ASC = (a, b) -> a.getRegistration().compareTo(b.getRegistration());
+        COMP_REGISTRATION_DESC = COMP_REGISTRATION_ASC.reversed();
+    }
 
     private final int SIZE;
     // private final List<Car> cars;
@@ -70,5 +90,22 @@ public class Parking implements Serializable {
     public Collection<Car> getCars() {
         return cars.values();
     }
+
+    public void showCars() {
+        showCars(COMP_TIME_ASC);
+    }
+
+    public void showCars(Comparator<Car> comp) {         // %t time, Y year, d day, r
+        Consumer<Car> cons = c -> System.out.printf("%s : %td.%<tm.%<tY%<tR \n ", c.getRegistration(), c.getStart());
+        cars.values().stream().sorted(comp).forEach(cons);
+    }
+
+    public void showCars(LocalDateTime start, LocalDateTime end) {
+        Consumer<Car> cons = c -> System.out.printf("%s : %td.%<tm.%<tY%<tR \n ", c.getRegistration(), c.getStart());
+        Predicate<Car> pred = (c) -> c.getStart().isAfter(start) && c.getStart().isBefore(end);
+        cars.values().stream().filter(pred).sorted(COMP_TIME_ASC).forEach(cons);
+    }
+
+
 }
 
