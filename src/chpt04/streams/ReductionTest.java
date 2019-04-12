@@ -1,10 +1,10 @@
 // <editor-fold defaultstate="collapsed" desc="Title">
 /*     Buch: - Flow2 / OCP Study Guide
- *  Kapitel: - 03 - Generics & Collections
+ *  Kapitel: - 04 - Streams
  *
- *    Thema: - 3.x - AnwendungsBeispiel
+ *    Thema: - 4.x - AnwendungsBeispiel
  *
- *  Listing: - 3.x.11 - ReductionTest.java
+ *  Listing: - 4.x.11 - ReductionTest.java
  *
  *   IDEA Project
  *
@@ -13,15 +13,9 @@
 
 package chpt04.streams;
 
+import java.util.*;
 import java.util.stream.Stream;
 import java.lang.StringBuilder;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.TreeSet;
 import java.util.stream.Collectors;
 
 /**
@@ -62,8 +56,79 @@ public class ReductionTest {
         Map<Boolean, List<String>> erg = str.collect(Collectors.partitioningBy(s -> s.length() == 1));
         System.out.println(erg.get(true));
 
+        System.out.println("##################  heldenListe ######################################");
+
+        List<Benutzer> benutzer = new ArrayList<>();
+        benutzer.add(new Benutzer("Peter", "Parker", "New York"));
+        benutzer.add(new Benutzer("Clark", "Kent", "Metropolis"));
+        benutzer.add(new Benutzer("Bruce", "Wayne", "Boston"));
+        benutzer.add(new Benutzer("Bruce", "Banner", "Boston"));
+        benutzer.add(new Benutzer("Tony", "Stark", "Miami"));
+        benutzer.add(new Benutzer("Max", "Musterman", "New York"));
+
+        System.out.println("##################  who lives where ##################################");
+
+        Map<String, List<Benutzer>> helden = benutzer.stream().collect(Collectors.groupingBy(Benutzer::getWohnort));
+
+        System.out.println(helden);
+
+        System.out.println("##################  who lives in New York ############################");
+
+        System.out.println(helden.get("New York"));
+
+        System.out.println("##################  other cities ######################################");
+
+        Stream<String> strStream = Stream.of("Hamburg", "Berlin", "München", "Hagen");
+
+        Map<String, Integer> map = strStream.collect(Collectors.toMap(String::toUpperCase, String::length));
+        System.out.println(map);
+
+        System.out.println("##################  ordered cities ####################################");
+
+        Comparator<Benutzer> comp = (a, b) -> a.getWohnort().compareTo(b.getWohnort());
+
+        System.out.println(benutzer.stream().sorted(comp).findAny());
+        // ohne comparator -->> xcptn
+
+        System.out.println("##################  ordered cities ####################################");
+
+        System.out.println(benutzer.stream().min(comp));
+        System.out.println(benutzer.stream().max(comp));
 
     }
 
+}
+
+class Benutzer {
+  private final String vorname;
+  private final String nachname;
+  private final String wohnort;
+
+  public Benutzer(String vorname, String nachname, String wohnort) {
+      this.vorname = vorname;
+      this.nachname = nachname;
+      this.wohnort = wohnort;
+  }
+
+    public String getVorname() {
+        return vorname;
+    }
+
+    public String getNachname() {
+        return nachname;
+    }
+
+    public String getWohnort() {
+        return wohnort;
+    }
+
+    @Override
+    public String toString() {
+      StringBuilder sb = new StringBuilder();
+      sb.append("Vorname : ").append(vorname)
+              .append(", Nachname : ").append(nachname)
+              .append(", wohnt in : ").append(wohnort);
+      return sb.toString();
+    }
 }
 
