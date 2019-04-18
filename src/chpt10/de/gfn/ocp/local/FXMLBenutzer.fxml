@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.cell.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.cell.* ?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="chpt10.de.gfn.ocp.local.FXMLBenutzerController">
+   <children>
+      <Label layoutX="34.0" layoutY="26.0" text="%firstname" />
+      <Label layoutX="34.0" layoutY="65.0" text="%lastname" />
+      <Label layoutX="34.0" layoutY="134.0" text="%user" />
+      <TextField fx:id="txt_Vorname" layoutX="119.0" layoutY="22.0" />
+      <TextField fx:id="txt_Nachname" layoutX="119.0" layoutY="61.0" />
+      <TableView fx:id="tbl_Benutzer" layoutX="34.0" layoutY="151.0" prefHeight="229.0" prefWidth="348.0">
+        <columns>
+            <TableColumn prefWidth="50.0" text="ID">
+                <cellValueFactory>
+                    <PropertyValueFactory property="id" />
+                </cellValueFactory>
+            </TableColumn>
+          
+            <TableColumn prefWidth="150.0" text="%firstname">
+              <cellValueFactory>
+                    <PropertyValueFactory property="vorname" />
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn prefWidth="150.0" text="%lastname">
+                <cellValueFactory>
+                    <PropertyValueFactory property="nachname" />
+                </cellValueFactory>
+            </TableColumn>
+        </columns>
+      </TableView>
+      <Button fx:id="btn_Speichern" layoutX="200.0" layoutY="101.0" mnemonicParsing="false" onAction="#speichernAction" text="Speichern" />
+      <Button fx:id="btn_Loeschen" layoutX="119.0" layoutY="101.0" mnemonicParsing="false" onAction="#loeschenAction" text="Löschen" />
+      <Label layoutX="278.0" layoutY="26.0" text="ID:" />
+      <TextField fx:id="txt_Id" disable="true" layoutX="308.0" layoutY="22.0" prefHeight="25.0" prefWidth="38.0" />
+      <Button fx:id="btn_Bearbeiten" layoutX="293.0" layoutY="101.0" mnemonicParsing="false" onAction="#bearbeitenAction" text="Bearbeiten" />
+   </children>
+</AnchorPane>

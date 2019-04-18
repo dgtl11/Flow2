@@ -1,17 +1,17 @@
 // <editor-fold defaultstate="collapsed" desc="Title">
 /*     Buch: - Flow2 / OCP Study Guide
- *  Kapitel: - 10 - JDBC
+ *  Kapitel: - 05 - Dates, Strings and Localization
  *
- *    Thema: - 10.0 -
+ *    Thema: - 05.0 -
  *
- *  Listing: - 10.0.09 - ResourceBundleTest.java
+ *  Listing: - 05.0.09 - ResourceBundleTest.java
  *  
  *   IDEA Project
  *
  *    Autor: - Daniel dgtl
  *  </editor-fold> */
 
-package chpt10.resources;
+package chpt05.resources;
 
 import java.util.Locale;
 import java.util.ResourceBundle;

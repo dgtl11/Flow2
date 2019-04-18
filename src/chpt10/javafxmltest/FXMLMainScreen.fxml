@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.cell.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="508.0" prefWidth="571.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="chpt10.javafxmltest.FXMLMainScreenController">
+    <children>
+        <Label fx:id="lbl_Vorname" layoutX="20.0" layoutY="39.0" minHeight="16" minWidth="69" text="Vorname: " />
+      <TextField fx:id="txt_Vorname" layoutX="121.0" layoutY="35.0" />
+      
+      <TextField fx:id="txt_Nachname" layoutX="121.0" layoutY="95.0" />
+      <Label fx:id="lbl_Nachname" layoutX="27.0" layoutY="99.0" text="Nachname: " />
+      
+      <Button fx:id="btn_Speichern" layoutX="121.0" layoutY="151.0" mnemonicParsing="false" onAction="#speichernAction" text="Speichern" />
+      
+      <TableView fx:id="tbl_Benutzer" layoutX="36.0" layoutY="196.0" prefHeight="281.0" prefWidth="496.0">
+        <columns>
+          <TableColumn prefWidth="250.0" text="Vorname">
+              <cellValueFactory>
+                  <PropertyValueFactory property="vorname" />
+              </cellValueFactory>
+            </TableColumn>
+          <TableColumn prefWidth="250.0" text="Nachname">
+          <cellValueFactory>
+                  <PropertyValueFactory property="nachname" />
+              </cellValueFactory>
+            </TableColumn>
+        </columns>
+      </TableView>
+      <Label fx:id="alert" layoutX="210.0" layoutY="155.0" prefHeight="17.0" prefWidth="319.0" text="Label" />
+    </children>
+</AnchorPane>
