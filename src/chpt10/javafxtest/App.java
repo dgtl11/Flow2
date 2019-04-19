@@ -7,19 +7,20 @@ package chpt10.javafxtest;
 
 import javafx.application.Application;
 import javafx.event.ActionEvent;
+
 import javafx.event.EventHandler;
+
 import javafx.scene.Scene;
+
 import javafx.scene.control.Button;
+
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
-/**
- *
- * @author Student
- */
+
 public class App extends Application {
 
     Label lbl = new Label();
@@ -32,7 +33,7 @@ public class App extends Application {
         
         EventHandler<ActionEvent> handeler = (e) -> lbl.setText("Hallo Welt!");
         
-        /*
+
         btn.setOnAction(new EventHandler<ActionEvent>() {
             
             @Override
@@ -41,9 +42,10 @@ public class App extends Application {
                 //System.out.println("Hello World!");
             }
         });
-        */
+
         
         // btn.setOnAction(handeler);
+
         btn.setOnAction(this::machWas);
         
         Button btn1 = new Button("Moin Moin!");
@@ -72,11 +74,12 @@ public class App extends Application {
         lbl.setText("Hallo Welt!");
     }
     
-    /**
-     * @param args the command line arguments
-     */
+
+
     public static void main(String[] args) {
         launch(args);
     }
     
 }
+
+
