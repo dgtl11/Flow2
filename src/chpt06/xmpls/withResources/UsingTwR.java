@@ -18,6 +18,9 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.Scanner;
+
+import static java.lang.System.out;
 
 public class UsingTwR {
 
@@ -41,6 +44,42 @@ public class UsingTwR {
         }
     }
 
-        public static void main (String[]args){
+    public static void main(String[] args) throws Exception {
+
+        BufferedReader in = null;
+        BufferedWriter out = null;
+
+        // appears to guarantee resource closure, but in fact it does not
+        try {
+
+        } finally {
+            if (in != null) in.close();
+            if (out != null) out.close();
         }
+
+        // better implementation
+        try {
+
+        } finally {
+            try {
+                in.close();
+            } catch (IOException e) {}
+            try {
+                out.close();
+            } catch (IOException e) {}
+        }
+
+
+        // Basics
+        try (Scanner s = new Scanner(System.in)) {
+            s.nextLine();
+        } catch(Exception e) {
+           // s.nextInt(); // DOES NOT COMPILE not in scope
+        } finally{
+           // s.nextInt(); // DOES NOT COMPILE
+        }
+
+
+
     }
+}
