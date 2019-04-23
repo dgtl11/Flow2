@@ -32,14 +32,18 @@ public class RevTestClass {
 
         System.out.println("~~~~02~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 
+        Console c = System.console(); //1
+        String line = c.readLine("Please enter your name:"); //2
+        System.out.println("Hello, "+line); //3
+
         System.out.println("~~~~03~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 
         System.out.println("~~~~04~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 
         System.out.println("~~~~05~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 
-        String line;
-        Console c = System.console();
+//        String line;
+//        Console c = System.console();
 //        Writer w = c.writer();
 //        if ((line = c.readLine()) != null)
 //            w.append(line);
