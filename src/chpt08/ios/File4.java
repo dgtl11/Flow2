@@ -12,13 +12,24 @@ import java.io.*;
 
 public class File4 {
 	public static void main(String [] args) throws IOException {
-            File file = new File("Output\\DateiSchreiber4.txt");
-            FileWriter fw = new FileWriter(file);
-                        
-            PrintWriter pw = new PrintWriter(fw);
+        // File file = new File("Output\\DateiSchreiber4.txt");
+
+        File myDir = new File("meinDir");
+        myDir.mkdir();
+
+        File meinedatei = new File(myDir, "muster.txt");
+        meinedatei.createNewFile();
+
+        FileWriter fw = new FileWriter(meinedatei);
+
+
+        PrintWriter pw = new PrintWriter(fw);
             
-            pw.println("Zeile 1");  // Daten schreiben
-            pw.println("Zeile 2");
+        pw.println("Zeile 1");  // Daten schreiben
+        pw.println("Zeile 2");
+
+        pw.flush();
+        pw.close();
             
-        }
+	}
 }
