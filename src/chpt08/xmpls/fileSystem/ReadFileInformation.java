@@ -19,8 +19,11 @@ public class ReadFileInformation {
     public static void main(String[] args) {
 
         // File file = new File("/home/smith/data/zoo.txt");        // absolut path     // relative:   data/zoo.txt
-        // File file = new File("C:\\data\\zoo.txt");
-        File file = new File("/home/dani/develop/IdeaProjects/Flow2/zoo.txt");
+
+        File file = new File("C:\\Users\\Student\\Documents\\IdeaProjects\\Flow2\\zoo.txt");  // SchulSystem
+
+        // File file = new File("/home/dani/develop/IdeaProjects/Flow2/zoo.txt");                   // homeSystem
+
         System.out.println("File Exists: " + file.exists());
 
         if(file.exists()) {
