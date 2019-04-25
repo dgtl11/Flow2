@@ -28,3 +28,4 @@ public class SystemInSample {
         System.out.println("You entered the following: " + userInput);
     }
 }
+

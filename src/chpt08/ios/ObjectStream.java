@@ -11,26 +11,29 @@
  *    Autor: - Daniel dgtl
  *  </editor-fold> */
 
-package chpt08.xmpls.usrInteraction;
+package chpt08.ios;
 
-import java.io.BufferedReader;
 import java.io.Console;
-import java.io.IOException;
-import java.io.InputStreamReader;
 
 
-public class ConsoleSample {
+public class ObjectStream {
 
     public static void main(String[] args) {
+
+        String str;
 
         // the new way
         Console console = System.console();
         if (console == null)
             System.out.println("console not available");
 
-        if(console != null) {
-            String userInput = console.readLine();
-            console.writer().println ("You entered the following: "+userInput);
-        }
+        str = console.readLine("Enter your name: ");
+        console.printf("here is your name: %s\n", str);
+
+        System.out.println("Enter the password: ");
+        char[] ch = console.readPassword();
+
+        String pass = String.valueOf(ch);
+        System.out.println("password is: " + pass);
     }
 }
