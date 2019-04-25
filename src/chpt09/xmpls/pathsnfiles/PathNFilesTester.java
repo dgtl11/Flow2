@@ -123,11 +123,11 @@ public class PathNFilesTester {
         Path relativePath = path39.relativize(path49);
         System.out.println(path39.resolve(relativePath));
 
-        // E:\data\..\user\home
+        // E:\data\..\\user\home        // should just be on slash but needs to be escaped
 
         System.out.println(path39.resolve(relativePath).normalize());
 
-        // E:\user\home
+        // E:\\user\home  // should just be on slash but needs to be escaped
 
         System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 

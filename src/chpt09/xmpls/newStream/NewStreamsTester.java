@@ -108,6 +108,10 @@ public class NewStreamsTester {
         Files.lines(path).filter(s -> s.length()>2).forEach(System.out::println);
 
 
+        // The first line does not compile because the filter() operation cannot be applied to a
+        // Collection without first converting it to a Stream using the stream() method.
+
+
         System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 
 
