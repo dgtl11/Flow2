@@ -25,7 +25,7 @@ public class WatchEventExample {
      
         WatchService watchService = FileSystems.getDefault().newWatchService();
          
-        Path path = Paths.get("WatchedDir");
+        Path path = Paths.get("C:\\Users\\Student\\Documents\\IdeaProjects\\Flow2\\temp");
         WatchKey watchKey = path.register(watchService, ENTRY_DELETE, ENTRY_MODIFY);
                                      
         System.out.println("Watch service registered dir: " + path.toString());
@@ -36,7 +36,7 @@ public class WatchEventExample {
  
             try {
                 System.out.println("Waiting for key to be signalled...");
-                key = watchService.take();
+                key = watchService.take();      // gibt einen in der queue liegenden WatchKey zurück
             }
             catch (InterruptedException ex) {
                 System.out.println("Interrupted Exception");
@@ -57,8 +57,8 @@ public class WatchEventExample {
                 }
  
                 WatchEvent pathEvent = (WatchEvent) genericEvent;
-                // Path file = pathEvent.context();
-                // System.out.println("File name: " + file.toString());
+                Path file = (Path) pathEvent.context();
+                System.out.println("File name: " + file.toString());
             } 
  
             boolean validKey = key.reset();
