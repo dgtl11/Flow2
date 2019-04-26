@@ -5,11 +5,13 @@ import java.nio.file.*;
 public class arbeiten_mit_Path {
 
     public static void main(String[] args) {
+        
         Path absolute1 = Paths.get("/home/java");
         Path absolute2 = Paths.get("/usr/local");
         Path absolute3 = Paths.get("/home/java/temp/music.mp3");
         Path relative1 = Paths.get("temp");
         Path relative2 = Paths.get("temp/musik.pdf");
+
         System.out.println("1: " + absolute1.relativize(absolute3));
         System.out.println("2: " + absolute3.relativize(absolute1));
         System.out.println("3: " + absolute1.relativize(absolute2));
