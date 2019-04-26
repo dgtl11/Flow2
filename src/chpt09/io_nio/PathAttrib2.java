@@ -69,7 +69,7 @@ public class PathAttrib2
 
       if (isDOS)
       {
-         System.out.println("DOS attributes:");
+         System.out.println("DOS (DiskOpSys) attributes:");
          attrNames = new String[] { "readonly", "hidden", "system", "archive" };
          for (String attrName: attrNames)
            System.out.printf("%s: %s%n", attrName,

@@ -1,6 +1,4 @@
-package chpt09.io_nio;
-
-import java.io.*;
+package chpt09.io_nio; import java.io.*;
 import java.net.*;
 public class smtpClient {
     public static void main(String[] args) {
