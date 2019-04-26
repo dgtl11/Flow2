@@ -14,6 +14,6 @@ public class arbeiten_mit_Path {
         System.out.println("2: " + absolute3.relativize(absolute1));
         System.out.println("3: " + absolute1.relativize(absolute2));
         System.out.println("4: " + relative1.relativize(relative2));
-        System.out.println("5: " + absolute1.relativize(relative1));       
+        System.out.println("5: " + absolute1.relativize(relative1));       // IllegalArgumentException: 'other' is different type of Path
     }
 }
