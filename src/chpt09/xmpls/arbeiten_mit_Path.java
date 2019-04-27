@@ -5,7 +5,7 @@ import java.nio.file.*;
 public class arbeiten_mit_Path {
 
     public static void main(String[] args) {
-        
+
         Path absolute1 = Paths.get("/home/java");
         Path absolute2 = Paths.get("/usr/local");
         Path absolute3 = Paths.get("/home/java/temp/music.mp3");
