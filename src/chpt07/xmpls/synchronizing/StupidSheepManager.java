@@ -4,7 +4,7 @@
  *
  *    Thema: - 07.3 - Synchronizing Data Access
  *
- *  Listing: - 07.3.14 - SheepManager.java
+ *  Listing: - 07.3.14 - StupidSheepManager.java
  *  
  *   IDEA Project
  *
@@ -17,7 +17,9 @@ package chpt07.xmpls.synchronizing;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class SheepManager {
+public class StupidSheepManager {
+
+    // they are all running random and don't even count right
 
     private int sheepCount = 0;
     private void incrementAndReport() {
@@ -27,7 +29,7 @@ public class SheepManager {
         ExecutorService service = null;
         try {
             service = Executors.newFixedThreadPool(20);
-            SheepManager manager = new SheepManager();
+            StupidSheepManager manager = new StupidSheepManager();
             for(int i=0; i<10; i++)
                 service.submit(() -> manager.incrementAndReport());
         } finally {
