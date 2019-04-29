@@ -4,7 +4,7 @@
  *
  *    Thema: - 07.5 - Working with Parallel Streams
  *
- *  Listing: - 07.5.18 - ParalStreamTester.java
+ *  Listing: - 07.5.19 - WhaleDataCalculator.java
  *  
  *   IDEA Project
  *
