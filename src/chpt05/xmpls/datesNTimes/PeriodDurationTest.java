@@ -105,7 +105,7 @@ public class PeriodDurationTest {
         System.out.println(ChronoUnit.HOURS.between(one, two));// 1
 
         System.out.println(ChronoUnit.MINUTES.between(one, two)); // 75
-        System.out.println(ChronoUnit.MINUTES.between(one, date)); // DateTimeException
+        // System.out.println(ChronoUnit.MINUTES.between(one, date)); // DateTimeException
     }
 
     public static void usingDurations() {

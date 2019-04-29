@@ -24,6 +24,8 @@ public class DateTimeTest {
         // this is new @ OCP
         System.out.println(ZonedDateTime.now());
 
+        System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~ date & time ~~~~~~~~~~~~~~~~~~~~~~~~~~");
+
         LocalDate date1 = LocalDate.of(2015, Month.JANUARY, 20);
         LocalDate date2 = LocalDate.of(2015, 1, 20);
 
@@ -40,6 +42,8 @@ public class DateTimeTest {
         public static LocalTime of(int hour, int minute, int second, int nanos)
 
 */
+        System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~ combine them ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+
         // combine them
         LocalDateTime dateTime1 = LocalDateTime.of(2015, Month.JANUARY, 20, 6, 15, 30);
         LocalDateTime dateTime2 = LocalDateTime.of(date1, time1);
@@ -69,16 +73,20 @@ public class DateTimeTest {
         public static ZonedDateTime of(LocalDate date, LocalTime time, ZoneId zone)
         public static ZonedDateTime of(LocalDateTime dateTime, ZoneId zone)
    */
+        System.out.println("~~~~~~~~~~~~~~~~~~~~~~ finding a time zone ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 
         // finding a time zone
-        ZoneId.getAvailableZoneIds().stream()
+/*        ZoneId.getAvailableZoneIds().stream()
                 .filter(z -> z.contains("US") || z.contains("America"))
                 .sorted().forEach(System.out::println);
+*/
+        ZoneId.getAvailableZoneIds().stream().forEach(System.out::println);
 
         // LocalDate d = new LocalDate(); // DOES NOT COMPILE
 
         // LocalDate.of(2015, Month.JANUARY, 32); // throws DateTimeException
 
+        System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~ manipulating ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 
         // manipulating
         LocalDate date = LocalDate.of(2014, Month.JANUARY, 20);
@@ -96,6 +104,8 @@ public class DateTimeTest {
         date = date.plusYears(5);
         System.out.println(date);           // 2019–02–28
 
+        System.out.println("~~~~~~~~~~~~~~~~~~~~ backwards in time ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+
         // backwards in time
         LocalDate dateagain = LocalDate.of(2020, Month.JANUARY, 20);
         LocalTime time = LocalTime.of(5, 15);
@@ -111,12 +121,15 @@ public class DateTimeTest {
         dateTime = dateTime.minusSeconds(30);
         System.out.println(dateTime);           // 2020–01–18T19:14:30
 
+        System.out.println("~~~~~~~~~~~~~~~~~~~~ or chain ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 
         // or chain
         LocalDate dateagain2 = LocalDate.of(2020, Month.JANUARY, 20);
         LocalTime timeagain2 = LocalTime.of(5, 15);
         LocalDateTime dateTimeagain2 = LocalDateTime.of(dateagain2, timeagain2)
                 .minusDays(1).minusHours(10).minusSeconds(30);
+
+        System.out.println("~~~~~~~~~~~~~~~~~~ don't get tricked ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 
         // dont get tricked
         LocalDate date3 = LocalDate.of(2020, Month.JANUARY, 20);
