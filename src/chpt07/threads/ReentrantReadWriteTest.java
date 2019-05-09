@@ -22,36 +22,58 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
 public class ReentrantReadWriteTest {
 
     private final List<String> liste = new ArrayList<>();
-
     private final ReentrantReadWriteLock lock = new ReentrantReadWriteLock();
-
     private final Lock readLock = lock.readLock();
     private final Lock writeLock = lock.writeLock();
 
     public static void main(String[] args) {
 
+        ReentrantReadWriteTest test = new ReentrantReadWriteTest();
+
+        Thread t1 = new Thread( () -> {
+           test.add("Moin");
+        });
+
+        Thread t2 = new Thread( () -> {
+            test.add("Hi");
+        });
+
+        Thread t3 = new Thread( () -> {
+            System.out.println(test.get(test.liste.size() -1));
+        });
+
+        Thread t4 = new Thread( () -> {
+            System.out.println(test.get(test.liste.size() -1));
+        });
+
+        t1.start();
+        t2.start();
+        t3.start();
+        t4.start();
     }
 
     String get (int index) {
-
         try {
             readLock.lock();
+            System.out.println("Lesen: ");
             return liste.get(index);
-        } finally {
+        }
+        finally {
             readLock.unlock();
         }
     }
 
     void add(String wert) {
-
         try {
             writeLock.lock();
+            System.out.println("Schreiben: ");
+
             liste.add(wert);
-        } finally {
+        }
+        finally {
             writeLock.unlock();
         }
     }
-
 }
 
 
