@@ -36,7 +36,7 @@ public class StateTest {
                 synchronized (lock) {
                     System.out.println(ike.getState());
                     try {
-                        lock.wait();        // löst interruped aus 
+                        lock.wait();        // löst interruped aus
                     } catch (InterruptedException e) {
                         System.out.println(e.getMessage()); // null
                     }

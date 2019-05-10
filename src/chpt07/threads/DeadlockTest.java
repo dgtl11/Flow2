@@ -15,6 +15,7 @@ package chpt07.threads;
 
 
 import java.lang.management.ManagementFactory;
+import java.lang.management.ThreadInfo;
 import java.lang.management.ThreadMXBean;
 import java.util.ArrayList;
 
@@ -58,11 +59,18 @@ public class DeadlockTest {
     // deadlocktest
     static void findDeadlock() {
         ThreadMXBean tb = ManagementFactory.getThreadMXBean();
-        long[] ids = tb.findMonitorDeadlockedThreads();
-        if(ids != null) {
-            for(long l : ids)
-                System.out.println(l);
+        // long[] ids = tb.findMonitorDeadlockedThreads();
+        // if(ids != null) {
+        //    for(long l : ids)
+        //        System.out.println(l);
+        // }
 
+        long[] ids = tb.findDeadlockedThreads();
+        ThreadInfo[] infos = tb.getThreadInfo(ids);
+        if(ids != null) {
+            for(ThreadInfo i : infos) {
+                System.out.println(i);
+            }
         }
     }
 
