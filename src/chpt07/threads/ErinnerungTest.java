@@ -19,13 +19,17 @@ public class ErinnerungTest {
     ScheduledExecutorService service = Executors.newSingleThreadScheduledExecutor();
 
     public void setzeErinnerung(Erinnerung erinnerung) {
-        service.scheduleAtFixedRate(erinnerung, 0,500_000_000, TimeUnit.MICROSECONDS);
+        service.scheduleAtFixedRate(erinnerung, 1,2, TimeUnit.SECONDS);
+        // service.scheduleAtFixedRate(erinnerung, 0,500_000_000, TimeUnit.MICROSECONDS);
+        // service.scheduleWithFixedDelay(erinnerung, 0,5, TimeUnit.SECONDS);
+
+
     }
 
     public static void main(String[] args)  {
         ErinnerungTest test = new ErinnerungTest();
         test.setzeErinnerung(new Erinnerung("Hamster Gassi führen / In's Rad lassen "));
-        
+
     }
 }
 
@@ -39,6 +43,15 @@ class Erinnerung implements Runnable {
 
     @Override
     public void run() {
-        System.out.println(nachricht);
+
+        try {
+            System.out.println("Start");
+            System.out.println(nachricht);
+            Thread.sleep(5000);
+            System.out.println("Ende");
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
     }
 }
