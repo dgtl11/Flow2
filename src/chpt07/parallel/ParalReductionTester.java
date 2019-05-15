@@ -23,10 +23,12 @@ public class ParalReductionTester {
 
     public static void main(String[] args) {
 
+        // a + b + c  =  (a + b) + c  =  a + (b + c)
+
         System.out.println("~~~~~~~~~~~~ reduce() ~~~~~~~~~~~~~~");
 
         String str =
-        Arrays.asList("Peter", "Clark", "Bruce", "Tony")
+        Arrays.asList("Peter", "Clark", "Bruce", "Dani")
                 .parallelStream()
                 // .reduce("", (a,b)-> a+ ", " + b, (a,b)-> a+ ", " + b);
                 .reduce(" ", String::concat, String::concat);
@@ -62,8 +64,10 @@ public class ParalReductionTester {
 
         System.out.println("~~~~~~~~~~~~~~~ collect() ~~~~~~~~~~~~");
 
+        // a + b + c  =  (a + b) + c  =  a + (b + c)
+
         TreeSet<String> set =
-        Arrays.asList("Peter", "Clark", "Bruce", "Tony")
+        Arrays.asList("Peter", "Clark", "Bruce", "Dani")
                 .parallelStream()
                 .collect(TreeSet::new, TreeSet::add, TreeSet::addAll);
 
@@ -72,7 +76,7 @@ public class ParalReductionTester {
         System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 
         ArrayList<String> list =
-        Arrays.asList("Peter", "Clark", "Bruce", "Tony")
+        Arrays.asList("Peter", "Clark", "Bruce", "Dani")
                 .parallelStream()
                 // .collect(TreeSet::new, TreeSet::add, TreeSet::addAll);
                 .collect(ArrayList::new, ArrayList::add, ArrayList::addAll);

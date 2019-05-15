@@ -65,13 +65,25 @@ public class ParalStreamTester {
 
         List<String> list = Collections.synchronizedList( new ArrayList<>());
 
-        Arrays.asList("Peter", "Clark", "Bruce", "Tony")
+        Arrays.asList("Peter", "Clark", "Bruce", "Dani")
                 .parallelStream()
                 .map(e -> { list.add(e);return e;})
                 .forEach(stringConsumer);
 
         System.out.println(list);
 
+        System.out.println("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+
+        Object[] arr =
+        Arrays.asList("Peter", "Clark", "Bruce", "Dani")
+                .parallelStream()
+                .toArray();
+
+        for(Object o : arr)
+            System.out.println(o);
+
+        // orderBased Ops
+        // skip(), limit(), findFirst(), toArray()
 
         System.out.println("\n~~~~~~~~~~ Buch Xmpls ~~~~~~~~~~~~~~");
 /*
