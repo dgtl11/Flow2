@@ -24,6 +24,7 @@ public class FPinJava8 {
         List<Integer> values = Arrays.asList(1, 2, 3, 4, 5, 6);
 
         // external Iterator
+
 /*        for(int i = 0; i < values.size(); i++) {
             System.out.println(values.get(i));
         }
@@ -35,6 +36,7 @@ public class FPinJava8 {
 */
 
         // internal iterator
+
 /*        values.forEach(new Consumer<Integer>() {
             @Override
             public void accept(Integer value) {
