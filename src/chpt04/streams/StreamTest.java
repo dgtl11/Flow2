@@ -16,6 +16,7 @@ import java.util.stream.IntStream;
 import java.util.stream.LongStream;
 import java.util.stream.Stream;
 
+
 /**
  *
  * @author tlubowiecki
@@ -23,7 +24,9 @@ import java.util.stream.Stream;
 public class StreamTest {
     
     public static void main(String[] args) {
-        
+
+
+
         // Stream von Integer-Objekten
         Stream<Integer> intStream = Stream.of(1,7,15,22,19,8, 8, 38,99, 99, 75);
         // intStream.toArray();
